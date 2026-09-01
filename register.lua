@@ -114,22 +114,22 @@ ui.register_button("misc_set_night", {
 	end,
 })
 
-ui.register_button("clear_inv", {
-	type = "image",
-	image = "ui_trash_icon.png",
-	tooltip = S("Clear inventory"),
-	action = function(player)
-		local player_name = player:get_player_name()
-		player:get_inventory():set_list("main", {})
-		core.chat_send_player(player_name, S('Inventory cleared!'))
-		core.sound_play("trash_all",
-				{to_player=player_name, gain = 1.0})
-	end,
-	condition = function(player)
+-- ui.register_button("clear_inv", {
+	-- type = "image",
+	-- image = "ui_trash_icon.png",
+	-- tooltip = S("Clear inventory"),
+	-- action = function(player)
+		-- local player_name = player:get_player_name()
+		-- player:get_inventory():set_list("main", {})
+		-- core.chat_send_player(player_name, S('Inventory cleared!'))
+		-- core.sound_play("trash_all",
+				-- {to_player=player_name, gain = 1.0})
+	-- end,
+	-- condition = function(player)
 		-- Disabled to prevent accidental inventory trashing.
-		return ui.is_creative(player:get_player_name())
-	end,
-})
+		-- return ui.is_creative(player:get_player_name())
+	-- end,
+-- })
 
 ui.register_page("craft", {
 	get_formspec = function(player, perplayer_formspec)
