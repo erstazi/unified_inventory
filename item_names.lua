@@ -7,6 +7,9 @@ local max_length = tonumber(core.settings:get("unified_inventory_max_item_name_l
 
 local function add_item_name_hud(player)
 	local player_name = player:get_player_name()
+	if not core.get_player_by_name(player_name) then
+		return
+	end
 	local off = {x=0, y=-65}
 	if hudbars_mod then
 		-- Assume no alignment (2 per line)
@@ -28,7 +31,7 @@ local function add_item_name_hud(player)
 		dtime = dlimit,
 		index = 1,
 		itemname = "",
-		lang_code = core.get_player_information(player_name).lang_code,
+		lang_code = (core.get_player_information(player_name) or {}).lang_code,
 	}
 end
 
